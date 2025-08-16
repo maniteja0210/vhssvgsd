@@ -1,0 +1,500 @@
+<!--  -->
+<!--  -->
+<!doctype html>
+<html lang="en" class="bg-gradient-to-b from-[#0f172a] via-[#071033] to-[#021024] text-slate-100">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:300,400,500,600,700&family=Inter:300,400,500,600,700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Cozy Brew — Craft coffee, warm people. Artisan roasts, seasonal menus, and a community-first cafe in the heart of the city.">
+  <meta property="og:title" content="Cozy Brew — Artisan Coffee Shop">
+  <meta property="og:description" content="Visit Cozy Brew for small-batch roasts, cozy corners, and coffee that tells a story.">
+  <meta property="og:image" content="https://images.pexels.com/photos/1137745/pexels-photo-1137745.jpeg?auto=compress&cs=tinysrgb&h=650&w=940">
+  <title>Cozy Brew — Artisan Coffee Shop</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Playfair Display', 'serif'],
+            body: ['Inter', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            coffee: {
+              50: '#f9f5f2',
+              100: '#efe6de',
+              500: '#6b3f28',
+              700: '#402615'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom CSS for glassmorphism and animations */
+    :root {
+      --glass-bg: rgba(255,255,255,0.06);
+      --glass-border: rgba(255,255,255,0.08);
+      --accent: linear-gradient(90deg,#ffb86b 0%, #ff7a7a 50%, #a98cff 100%);
+      --focus-ring: rgba(168, 141, 255, 0.25);
+    }
+
+    .glass {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(8px) saturate(120%);
+    }
+
+    .hero-parallax {
+      transform: translateZ(0);
+      will-change: transform;
+      transition: transform 0.15s linear;
+    }
+
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* make focus states visible */
+    :focus { outline: none; box-shadow: 0 0 0 6px var(--focus-ring); }
+
+    /* ensure full-bleed content */
+    .full-bleed { width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
+
+    /* thin scrollbar */
+    ::-webkit-scrollbar { height: 10px; width: 10px }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 999px }
+
+  </style>
+</head>
+<body style="font-family: 'Playfair Display', sans-serif;" class="font-body leading-relaxed antialiased text-slate-100">
+  <!-- NAV -->
+  <header class="fixed inset-x-0 top-4 z-50 px-6">
+    <nav class="w-full max-w-none flex items-center justify-between glass rounded-xl p-3 shadow-lg">
+      <div class="flex items-center gap-4">
+        <a href="#" onclick="window.parent.handlePreviewNavigation(\'index.html\'); return false;" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-yellow-400 via-orange-400 to-rose-400 flex items-center justify-center shadow-md transform hover:scale-105 transition">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-white"><path d="M3 6h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7 6v12a5 5 0 005 5h0a5 5 0 005-5V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </div>
+          <div class="leading-tight">
+            <div class="text-sm font-semibold text-white">Cozy Brew</div>
+            <div class="text-[11px] text-slate-300">Artisan Coffee & Community</div>
+          </div>
+        </a>
+      </div>
+
+      <ul id="nav" class="hidden md:flex items-center gap-4 text-sm">
+        <li><a href="#" onclick="window.parent.handlePreviewNavigation(\'index.html\'); return false;" class="nav-link px-3 py-2 rounded-md hover:bg-white/5 transition">Home</a></li>
+        <li><a href="#" onclick="window.parent.handlePreviewNavigation(\'about.html\'); return false;" class="nav-link px-3 py-2 rounded-md hover:bg-white/5 transition">About</a></li>
+        <li><a href="#" onclick="window.parent.handlePreviewNavigation(\'contact.html\'); return false;" class="nav-link px-3 py-2 rounded-md hover:bg-white/5 transition">Contact</a></li>
+        <li><a href="#menu" class="nav-link px-3 py-2 rounded-md hover:bg-white/5 transition">Menu</a></li>
+      </ul>
+
+      <div class="flex items-center gap-3">
+        <button id="themeToggle" aria-label="Toggle dark/light" class="p-2 rounded-md hover:bg-white/5 transition">
+          <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </button>
+        <button id="orderBtn" class="bg-gradient-to-r from-yellow-400 to-rose-400 text-slate-900 px-4 py-2 rounded-lg font-semibold shadow hover:scale-[1.02] transition focus:ring-4">Order Now</button>
+        <button id="mobileMenuBtn" class="md:hidden p-2 rounded-md hover:bg-white/5 transition" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <div id="mobileNav" class="fixed inset-0 z-40 hidden bg-black/60 backdrop-blur-sm p-6">
+    <div class="glass rounded-xl p-6 w-full h-full overflow-auto">
+      <div class="flex items-center justify-between">
+        <div class="text-lg font-semibold">Cozy Brew</div>
+        <button id="closeMobileNav" class="p-2 rounded-md hover:bg-white/5">Close</button>
+      </div>
+      <ul class="mt-6 flex flex-col gap-4">
+        <li><a href="#" onclick="window.parent.handlePreviewNavigation(\'index.html\'); return false;" class="px-4 py-3 rounded-md hover:bg-white/5">Home</a></li>
+        <li><a href="#" onclick="window.parent.handlePreviewNavigation(\'about.html\'); return false;" class="px-4 py-3 rounded-md hover:bg-white/5">About</a></li>
+        <li><a href="#" onclick="window.parent.handlePreviewNavigation(\'contact.html\'); return false;" class="px-4 py-3 rounded-md hover:bg-white/5">Contact</a></li>
+        <li><a href="#menu" class="px-4 py-3 rounded-md hover:bg-white/5">Menu</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <main class="pt-28 pb-24">
+    <section class="relative overflow-hidden full-bleed">
+      <div class="absolute inset-0 pointer-events-none hero-parallax" id="heroBg" style="background-image: linear-gradient(180deg, rgba(2,6,23,0.55), rgba(2,6,23,0.75)), url('https://images.pexels.com/photos/25354697/pexels-photo-25354697.jpeg?auto=compress&cs=tinysrgb&h=650&w=940'); background-size: cover; background-position: center; filter: contrast(1.05) saturate(1.05); transform: translateY(0px);">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+      </div>
+
+      <div class="relative z-10 px-6 py-20">
+        <div class="w-full flex flex-col md:flex-row items-center gap-8">
+          <div class="w-full md:w-6/12">
+            <div class="glass rounded-2xl p-8 md:p-12 shadow-2xl">
+              <h1 class="text-4xl md:text-6xl font-display tracking-tight leading-tight text-white">Every cup tells a story.</h1>
+              <p class="mt-4 text-slate-200 text-lg max-w-none">At Cozy Brew, we source small-batch beans, roast them with care, and craft drinks that spark connection. From first sip to last, we design moments: warm, honest, unforgettable.</p>
+
+              <div class="mt-6 flex flex-wrap gap-3">
+                <a href="#menu" class="inline-flex items-center gap-3 bg-white/95 text-slate-900 px-5 py-3 rounded-lg font-semibold shadow hover:scale-[1.02] transition">Explore Menu</a>
+                <button id="heroOrder" class="inline-flex items-center gap-3 border border-white/10 px-5 py-3 rounded-lg glass text-white hover:scale-[1.02] transition">Reserve a Table</button>
+              </div>
+
+              <div class="mt-6 grid grid-cols-2 gap-3">
+                <div class="p-3 rounded-lg bg-white/3">
+                  <div class="text-xs text-slate-300">Today’s roast</div>
+                  <div class="font-semibold">Guatemalan Huehuetenango</div>
+                </div>
+                <div class="p-3 rounded-lg bg-white/3">
+                  <div class="text-xs text-slate-300">Limited batch</div>
+                  <div class="font-semibold">Citrus Bloom Espresso</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 flex items-center gap-4">
+              <div class="w-28 h-28 rounded-lg overflow-hidden shadow-lg floating">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1634108320005-f27c1741a250?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHwxfHxPdmVyaGVhZCUyMHNob3QlMjBvZiUyMHBlcmZlY3RseSUyMGJyZXdlZCUyMGVzcHJlc3NvJTIwd2l0aCUyMGNyZW1hfGVufDB8MHx8fDE3NTUzNDYwNDR8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="espresso" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <div class="text-sm text-slate-300">Loyalty Progress</div>
+                <div class="w-64 bg-white/5 rounded-full h-3 mt-2 overflow-hidden">
+                  <div id="loyaltyBar" class="h-3 bg-gradient-to-r from-yellow-400 to-rose-400 rounded-full w-[60%] transition-width"></div>
+                </div>
+                <div class="text-xs text-slate-400 mt-1">60% to a free pour-over — visit in the next 5 days to earn double points.</div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="w-full md:w-6/12 flex justify-center">
+            <div class="relative w-full md:w-[520px] glass rounded-2xl p-4 shadow-2xl">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1734605013645-b42786c46f1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHwzfHxBJTIwY296eSUyMGNvcm5lciUyMGluJTIwYSUyMGNvZmZlZSUyMHNob3AlMjB3aXRoJTIwcGxhbnRzJTJDJTIwd29vZCUyMHRhYmxlcyUyQyUyMGFuZCUyMHdhcm0lMjBsaWdodHxlbnwwfDB8fHwxNzU1MzQ2MDQ0fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="cozy-corner" class="w-full h-80 object-cover rounded-lg" />
+              <div class="absolute -top-6 right-6 glass p-3 rounded-lg shadow transform hover:scale-105 transition">
+                <div class="text-xs text-slate-300">Barista Pick</div>
+                <div class="font-semibold">Honey Lavender Latte</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="px-6 mt-12">
+      <div class="glass rounded-xl p-6 shadow-lg">
+        <div class="grid md:grid-cols-3 gap-6 w-full">
+          <div class="p-4 rounded-lg hover:scale-[1.02] transition">
+            <div class="text-3xl">☕</div>
+            <h3 class="mt-2 font-semibold text-white">Craft Roasts</h3>
+            <p class="mt-1 text-slate-300">Small-batch beans roasted weekly. We curate profiles that highlight origin and story.</p>
+          </div>
+          <div class="p-4 rounded-lg hover:scale-[1.02] transition">
+            <div class="text-3xl">🌿</div>
+            <h3 class="mt-2 font-semibold text-white">Sustainable & Local</h3>
+            <p class="mt-1 text-slate-300">Producer partnerships and compostable packaging. Coffee you can feel good about.</p>
+          </div>
+          <div class="p-4 rounded-lg hover:scale-[1.02] transition">
+            <div class="text-3xl">🤝</div>
+            <h3 class="mt-2 font-semibold text-white">Community Space</h3>
+            <p class="mt-1 text-slate-300">Monthly cuppings, open mic nights, and a loyalty program that rewards regulars.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section id="menu" class="px-6 mt-12">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl md:text-3xl font-display">Our Menu</h2>
+        <div class="text-sm text-slate-400">Seasonal highlights & barista favorites</div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass rounded-xl p-6 hover:shadow-2xl transition">
+          <div class="flex items-start gap-4">
+            <img loading="lazy" src="https://images.pexels.com/photos/3807394/pexels-photo-3807394.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="pour-over" class="w-24 h-24 object-cover rounded-lg">
+            <div>
+              <h3 class="font-semibold">Single Origin Pour-Over</h3>
+              <div class="text-slate-300 text-sm">Bright, floral notes. 8–12 oz</div>
+              <div class="mt-3 font-semibold">$5.50</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass rounded-xl p-6 hover:shadow-2xl transition">
+          <div class="flex items-start gap-4">
+            <img loading="lazy" src="https://images.pexels.com/photos/16613916/pexels-photo-16613916.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="espresso" class="w-24 h-24 object-cover rounded-lg">
+            <div>
+              <h3 class="font-semibold">Citrus Bloom Espresso</h3>
+              <div class="text-slate-300 text-sm">Limited batch—vibrant and sparkling</div>
+              <div class="mt-3 font-semibold">$3.50</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass rounded-xl p-6 hover:shadow-2xl transition">
+          <div class="flex items-start gap-4">
+            <img loading="lazy" src="https://images.pexels.com/photos/18136632/pexels-photo-18136632.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="latte" class="w-24 h-24 object-cover rounded-lg">
+            <div>
+              <h3 class="font-semibold">Honey Lavender Latte</h3>
+              <div class="text-slate-300 text-sm">House syrup, velvety milk</div>
+              <div class="mt-3 font-semibold">$4.75</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 flex gap-4">
+        <a href="#" class="px-5 py-3 bg-white/95 text-slate-900 rounded-lg font-semibold shadow hover:scale-[1.02] transition">Full Menu</a>
+        <button id="showSpecials" class="px-5 py-3 glass rounded-lg border border-white/8">Weekly Specials</button>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="px-6 mt-12">
+      <h2 class="text-2xl font-display mb-4">Gallery</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <img loading="lazy" src="https://images.pexels.com/photos/584165/pexels-photo-584165.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="beans" class="w-full h-40 object-cover rounded-lg cursor-pointer open-img" tabindex="0">
+        <img loading="lazy" src="https://pixabay.com/get/g4ec09eaef76d37ee5cca361551057d112e8c7821e485862672a2951b1f4209dbcf5fc4f2d018e9eefa503e7dfe4d27bc39400803d39d0ed538898045853a3711_640.jpg" alt="barista" class="w-full h-40 object-cover rounded-lg cursor-pointer open-img" tabindex="0">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1659277960229-8c901685b618?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHwzfHxDdXN0b21lcnMlMjBsYXVnaGluZyUyMGF0JTIwYSUyMGNvbW11bml0eSUyMHRhYmxlJTIwaW5zaWRlJTIwYSUyMGNvZmZlZSUyMHNob3B8ZW58MHwwfHx8MTc1NTM0NjA1MHww&ixlib=rb-4.1.0&q=80&w=1080" alt="customers" class="w-full h-40 object-cover rounded-lg cursor-pointer open-img" tabindex="0">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1595353611215-3ea27a66f0b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHw1fHxGcmVzaGx5JTIwYmFrZWQlMjBjcm9pc3NhbnRzJTIwb24lMjBhJTIwdHJheSUyMG5leHQlMjB0byUyMGElMjBjdXAlMjBvZiUyMGNvZmZlZXxlbnwwfDB8fHwxNzU1MzQ2MDUxfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="pastries" class="w-full h-40 object-cover rounded-lg cursor-pointer open-img" tabindex="0">
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="px-6 mt-12">
+      <h2 class="text-2xl font-display mb-4">What our guests say</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <blockquote class="glass p-6 rounded-xl">
+          <p class="text-slate-200">"Cozy Brew is my weekly ritual. The staff remembers my order, the roast is unmatched, and the atmosphere feels like a hug."</p>
+          <div class="mt-4 text-sm text-slate-300">— Maya P., regular</div>
+        </blockquote>
+        <blockquote class="glass p-6 rounded-xl">
+          <p class="text-slate-200">"Their seasonal series is always worth trying. The cupping events are a great way to learn and meet people."</p>
+          <div class="mt-4 text-sm text-slate-300">— Leo R., coffee enthusiast</div>
+        </blockquote>
+        <blockquote class="glass p-6 rounded-xl">
+          <p class="text-slate-200">"Perfect work spot. Fast Wi-Fi, delicious cold brew, and natural light. I leave more productive and happier every time."</p>
+          <div class="mt-4 text-sm text-slate-300">— Dr. Amelia S., remote worker</div>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="px-6 mt-12">
+      <h2 class="text-2xl font-display mb-4">FAQ</h2>
+      <div class="glass rounded-xl p-6">
+        <div class="grid gap-3">
+          <details class="rounded-md p-4 bg-white/3" open>
+            <summary class="cursor-pointer font-semibold">Do you offer dairy alternatives?</summary>
+            <p class="mt-2 text-slate-300">Yes — oat, almond, and soy are available. We also have a rotating selection of plant-based milks for specialty drinks.</p>
+          </details>
+
+          <details class="rounded-md p-4 bg-white/3">
+            <summary class="cursor-pointer font-semibold">Can I host a private event?</summary>
+            <p class="mt-2 text-slate-300">Absolutely. We host tastings, workshops, and small gatherings. Fill out our contact form with details and we’ll follow up.</p>
+          </details>
+
+          <details class="rounded-md p-4 bg-white/3">
+            <summary class="cursor-pointer font-semibold">Do you sell beans to take home?</summary>
+            <p class="mt-2 text-slate-300">Yes — whole bean and pre-ground options are available in-store and online. Ask about our subscription for regular deliveries.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER & FOOTER -->
+    <section class="px-6 mt-12 mb-24">
+      <div class="glass rounded-xl p-6 md:flex items-center justify-between gap-6">
+        <div>
+          <h3 class="text-xl font-semibold">Stay in the loop</h3>
+          <p class="text-slate-300">Special roasts, early access to events, and member-only offers. No spam — just good coffee news.</p>
+        </div>
+        <form id="newsletterForm" class="mt-4 md:mt-0 flex gap-3">
+          <input aria-label="Email" id="newsletterEmail" type="email" placeholder="you@coffee.com" required class="px-4 py-3 rounded-lg bg-white/5 placeholder:text-slate-300 focus:ring-4">
+          <button type="submit" class="px-4 py-3 bg-gradient-to-r from-yellow-400 to-rose-400 text-slate-900 rounded-lg font-semibold">Subscribe</button>
+        </form>
+      </div>
+
+      <footer class="mt-6 text-slate-400 text-sm">
+        <div class="flex flex-col md:flex-row md:justify-between items-start md:items-center gap-4">
+          <div>© Cozy Brew — Crafted with care. <span class="text-xs text-slate-500">Made for coffee lovers.</span></div>
+          <div class="flex gap-4">
+            <a href="#" class="hover:underline">Privacy</a>
+            <a href="#" class="hover:underline">Terms</a>
+            <a href="#" onclick="window.parent.handlePreviewNavigation(\'contact.html\'); return false;" class="hover:underline">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <!-- MODALS -->
+  <div id="orderModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-6">
+    <div class="glass rounded-2xl w-full max-w-2xl p-6">
+      <div class="flex items-center justify-between">
+        <h3 class="font-semibold text-xl">Order / Reserve</h3>
+        <button id="closeOrder" class="p-2 rounded-md hover:bg-white/5">Close</button>
+      </div>
+
+      <form id="orderForm" class="mt-4 grid gap-3">
+        <input aria-label="Name" required class="px-4 py-3 rounded-lg bg-white/5" placeholder="Your name">
+        <input aria-label="Phone or email" required class="px-4 py-3 rounded-lg bg-white/5" placeholder="Phone or email">
+        <select aria-label="Order type" class="px-4 py-3 rounded-lg bg-white/5">
+          <option>Pick-up</option>
+          <option>Delivery</option>
+          <option>Reserve a Table</option>
+        </select>
+        <textarea aria-label="Notes" class="px-4 py-3 rounded-lg bg-white/5" placeholder="Any notes or requests" rows="3"></textarea>
+        <div class="flex items-center gap-3">
+          <button type="submit" class="px-4 py-3 bg-gradient-to-r from-yellow-400 to-rose-400 text-slate-900 rounded-lg font-semibold">Send Request</button>
+          <div id="orderStatus" class="text-sm text-slate-300"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- IMAGE LIGHTBOX -->
+  <div id="imgModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/75 p-6">
+    <div class="max-w-4xl w-full rounded-lg overflow-hidden">
+      <img id="imgModalImg" src="" alt="expanded" class="w-full h-auto rounded-lg">
+    </div>
+  </div>
+
+  <script>
+    // Basic interactivity and enhancements
+    const body = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const orderBtn = document.getElementById('orderBtn');
+    const orderModal = document.getElementById('orderModal');
+    const closeOrder = document.getElementById('closeOrder');
+    const heroOrder = document.getElementById('heroOrder');
+    const loyaltyBar = document.getElementById('loyaltyBar');
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeMobileNav = document.getElementById('closeMobileNav');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Light/Dark toggle persisted
+    function setTheme(dark) {
+      if (dark) body.classList.add('dark'); else body.classList.remove('dark');
+      localStorage.setItem('cozy-theme', dark ? 'dark' : 'light');
+      themeIcon.innerHTML = dark ? '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>' : '<path d="M12 3v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>';
+    }
+    const saved = localStorage.getItem('cozy-theme');
+    setTheme(saved === 'dark');
+    themeToggle.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+
+    // Order modal
+    function openOrder() { orderModal.classList.remove('hidden'); orderModal.classList.add('flex'); }
+    function closeOrderModal() { orderModal.classList.add('hidden'); orderModal.classList.remove('flex'); }
+    orderBtn.addEventListener('click', openOrder);
+    heroOrder.addEventListener('click', openOrder);
+    closeOrder.addEventListener('click', closeOrderModal);
+    orderModal.addEventListener('click', (e) => { if (e.target === orderModal) closeOrderModal(); });
+
+    // Simple form handling
+    document.getElementById('orderForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const status = document.getElementById('orderStatus');
+      status.textContent = 'Sending...';
+      setTimeout(() => { status.textContent = 'Thank you! We will contact you soon.'; e.target.reset(); }, 1200);
+    });
+
+    // Mobile nav
+    mobileMenuBtn.addEventListener('click', () => mobileNav.classList.remove('hidden'));
+    closeMobileNav.addEventListener('click', () => mobileNav.classList.add('hidden'));
+
+    // Gallery lightbox
+    document.querySelectorAll('.open-img').forEach(img => {
+      img.addEventListener('click', () => {
+        document.getElementById('imgModalImg').src = img.src;
+        document.getElementById('imgModal').classList.remove('hidden');
+        document.getElementById('imgModal').classList.add('flex');
+      });
+      img.addEventListener('keydown', (e) => { if (e.key === 'Enter') img.click(); });
+    });
+    document.getElementById('imgModal').addEventListener('click', (e) => { if (e.target.id === 'imgModal') { document.getElementById('imgModal').classList.add('hidden'); document.getElementById('imgModal').classList.remove('flex'); }});
+
+    // Smooth scroll and active nav highlighting
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => { e.preventDefault(); const id = a.getAttribute('href').substring(1); const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    });
+
+    // IntersectionObserver reveal animations
+    const revealElems = document.querySelectorAll('section, .glass, .floating');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.transition = 'opacity 800ms ease, transform 800ms ease';
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealElems.forEach(el => { el.style.opacity = 0; el.style.transform = 'translateY(18px)'; io.observe(el); });
+
+    // Parallax for hero background
+    window.addEventListener('scroll', () => {
+      const hero = document.getElementById('heroBg');
+      const y = window.scrollY / 3;
+      hero.style.transform = `translateY(${y}px)`;
+
+      // active nav
+      const sections = document.querySelectorAll('main section');
+      let current = '';
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top <= 120) current = section.id || current;
+      });
+      navLinks.forEach(a => a.classList.remove('text-amber-300'));
+      if (current) { const link = document.querySelector(`a[href='#${current}']`); if (link) link.classList.add('text-amber-300'); }
+    });
+
+    // Newsletter validation and microinteraction
+    document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('newsletterEmail');
+      if (!email.value.match(/\S+@\S+\.\S+/)) { email.focus(); email.style.border = '1px solid #ff7a7a'; return; }
+      email.style.border = '';
+      alert('Thanks for subscribing — welcome to the Cozy Brew circle!');
+      e.target.reset();
+    });
+
+    // Simple loyalty progress (could hook to real account later)
+    setTimeout(() => { loyaltyBar.style.width = '60%'; }, 600);
+
+    // Accessibility: close modals with Esc
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeOrderModal();
+        document.getElementById('imgModal').classList.add('hidden');
+      }
+    });
+
+    // Lazy loading fallback
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => { img.loading = 'lazy'; });
+
+    // Simple skeleton loader simulation (progressive enhancement)
+    window.addEventListener('load', () => {
+      document.body.style.transition = 'opacity 500ms';
+      document.body.style.opacity = 1;
+    });
+  </script>
+</body>
+</html>
