@@ -1,0 +1,94 @@
+<!--  -->
+<!--  -->
+<!doctype html>
+<html lang="en" class="bg-gradient-to-b from-[#071033] to-[#021024] text-slate-100">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:300,400,500,600,700&family=Inter:300,400,500,600,700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact — Cozy Brew</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .glass{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);backdrop-filter:blur(6px)}
+    .full-bleed{width:100vw;margin-left:calc(50% - 50vw)}
+  </style>
+</head>
+<body style="font-family: 'Playfair Display', sans-serif;" class="font-body antialiased leading-relaxed">
+  <header class="fixed inset-x-0 top-4 z-40 px-6">
+    <nav class="glass rounded-xl p-3 flex items-center justify-between shadow">
+      <a href="#" onclick="window.parent.handlePreviewNavigation(\'index.html\'); return false;" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-yellow-400 to-rose-400 flex items-center justify-center text-slate-900 font-bold">CB</div>
+        <div class="text-sm">Cozy Brew</div>
+      </a>
+      <ul class="hidden md:flex gap-4 text-sm">
+        <li><a href="#" onclick="window.parent.handlePreviewNavigation(\'index.html\'); return false;" class="px-3 py-2 rounded-md hover:bg-white/5">Home</a></li>
+        <li><a href="#" onclick="window.parent.handlePreviewNavigation(\'about.html\'); return false;" class="px-3 py-2 rounded-md hover:bg-white/5">About</a></li>
+        <li><a href="#" onclick="window.parent.handlePreviewNavigation(\'contact.html\'); return false;" class="px-3 py-2 rounded-md bg-white/5">Contact</a></li>
+      </ul>
+      <div class="flex items-center gap-3">
+        <a href="#" onclick="window.parent.handlePreviewNavigation(\'index.html\'); return false;" class="px-4 py-2 bg-gradient-to-r from-yellow-400 to-rose-400 text-slate-900 rounded-lg font-semibold">Order</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-28 px-6 pb-24">
+    <section class="glass rounded-2xl p-8 md:p-12 shadow-lg">
+      <h1 class="text-3xl font-display">Contact & Visit</h1>
+      <p class="mt-2 text-slate-300">Questions, events, or wholesale inquiries — we'd love to hear from you. Fill the form and we'll reply within one business day.</p>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <div>
+          <form id="contactForm" class="grid gap-3">
+            <label class="text-sm">Name <input required aria-label="Name" class="w-full mt-1 px-4 py-3 rounded-lg bg-white/5" placeholder="Your full name"></label>
+            <label class="text-sm">Email <input type="email" required aria-label="Email" class="w-full mt-1 px-4 py-3 rounded-lg bg-white/5" placeholder="you@domain.com"></label>
+            <label class="text-sm">Message <textarea required aria-label="Message" class="w-full mt-1 px-4 py-3 rounded-lg bg-white/5" rows="5" placeholder="Tell us about your inquiry"></textarea></label>
+            <div class="flex items-center gap-3">
+              <button type="submit" class="px-4 py-3 bg-gradient-to-r from-yellow-400 to-rose-400 text-slate-900 rounded-lg font-semibold">Send Message</button>
+              <div id="contactStatus" class="text-sm text-slate-300"></div>
+            </div>
+          </form>
+
+          <div class="mt-6 text-slate-300">
+            <div class="font-semibold">Address</div>
+            <div>123 Brew Lane, City Center</div>
+            <div class="mt-3">Phone: (555) 123-4567</div>
+            <div class="mt-1">Hours: Mon-Fri 7am–7pm • Sat-Sun 8am–6pm</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="glass rounded-lg p-4">
+            <div class="text-sm text-slate-300">Find us on the map</div>
+            <img src="https://images.unsplash.com/photo-1736117705482-6d897896e077?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHwxMHx8TWFwJTIwcGxhY2Vob2xkZXIlMjBzaG93aW5nJTIwdGhlJTIwY29mZmVlJTIwc2hvcCUyMGxvY2F0aW9uJTIwd2l0aCUyMG5lYXJieSUyMGxhbmRtYXJrc3xlbnwwfDB8fHwxNzU1MzQ2MDU2fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="map" class="w-full h-64 object-cover rounded-lg mt-3">
+          </div>
+
+          <div class="mt-6 grid grid-cols-2 gap-3">
+            <div class="glass rounded-lg p-4 text-center">
+              <div class="font-semibold">Wholesale</div>
+              <div class="text-slate-300 text-sm mt-1">Partner with us for fresh-roasted supply.</div>
+            </div>
+            <div class="glass rounded-lg p-4 text-center">
+              <div class="font-semibold">Events</div>
+              <div class="text-slate-300 text-sm mt-1">Host a cupping or workshop in our space.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-12 text-slate-400">© Cozy Brew — Let's make something warm together. <a href="#" onclick="window.parent.handlePreviewNavigation(\'index.html\'); return false;" class="underline">Home</a></footer>
+  </main>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const status = document.getElementById('contactStatus');
+      status.textContent = 'Sending...';
+      setTimeout(() => { status.textContent = 'Message sent — we will be in touch!'; e.target.reset(); }, 1000);
+    });
+  </script>
+</body>
+</html>
