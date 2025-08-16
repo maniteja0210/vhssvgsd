@@ -1,0 +1,18 @@
+{
+  "name": "cozy-brew-website",
+  "version": "1.0.0",
+  "description": "Cozy Brew - Artisan coffee shop website with modern UI, animations, and interactive elements.",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
+  },
+  "author": "Cozy Brew",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
