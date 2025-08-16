@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: cozy-brew-cafe
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    branch: main
+    disk: 512
